@@ -1,0 +1,83 @@
+
+class Joint {
+	string JOINT_NAME
+
+	Servo joint;
+
+	int min angle
+	int max_angle
+	
+	int default pos;	// % of max_angle-min_angle
+	int goal_pos 		// % of max_angle-min_angle 
+	int step_size; 		// % of max_angle-min_angle
+
+	move();
+		// move joint 1 "step" towards goal using gloalstruct
+}
+
+
+
+abstract class Motorics
+	int delay;
+
+	int n_joints;
+	Joint* joints;
+
+
+	CONSTRUCTOR(delay)
+		// set n_joints = 0		
+		// set delay
+
+	addJoint(jointname, pinnr, min_angle, max_angle, default_pos);
+		reallocate joints, copy old array content
+		add new Jointstruct	// default step size = 100
+
+	setJointGoalPos(int joint_nr, goal_pos,)
+
+
+	setJointStepSize(int joint_nr, step_size)
+		// validate 0 < step size < 100
+
+
+	updateJoints()
+		forall joints move()
+
+	resetJoints()
+		// reset all joints to neutral position, no steps
+		// all angles @ default
+
+
+class KnexBugMotorics
+
+	CONSTRUCTOR()
+		super()
+
+	@Overrides
+	setJointGoalPos(int joint_nr, goal_pos,)
+		// reverse for mirrored servos
+
+
+	@Overrides
+	resetJoints()
+		// reset all joints to neutral position, no steps
+		// specific neutral position
+
+loop:
+	// get+interpret commands, set new goal
+
+	motorics.updateJoints();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
